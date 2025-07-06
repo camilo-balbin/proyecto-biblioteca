@@ -1,5 +1,12 @@
 #proyecto biblioteca
 
+#base de datos en memoria
+
+libros = []
+socios = []
+auxContador =1
+
+
 def menu():#menu de la biblioteca
     print("\nBienvenido a nuestra biblioteca MINIBIBLIOTECA ")
     print("\n1. Registrar un libro")
@@ -10,23 +17,30 @@ def menu():#menu de la biblioteca
     print("6. Ver todos los libros ")
     print("7. Ver todos los socios ")
     print("0. Salir")
-    print("por fin dio esta mierda?")
+    
     
 def RegistrarLibro():
-    titulo = input("\ningrese el titulo del libro:").split()#.lower()# split:para separa con una coma cada vez que se ingrese un titulo.
-    if not titulo:
-        print("Titulo no puede estar vacio")
-        
-    autor = input("\ningrese el autor del libro: ").split()#.lower()#lower: colocar todas en minusculas
     
+    global libros 
+    print("Registar libros📖")
+    
+    titulo = input("\ningrese el titulo del libro:").lower()# .split():para separa con una coma cada vez que se ingrese un titulo.
+    
+    if not titulo:
+        print("\n❌Titulo no puede estar vacio❌").strip()# STRIP = quitar espacios o tabulaciones
+        
+        RegistrarLibro()#reinicia nuevamente, envia a a la funcion menu
+        
+    autor = input("\ningrese el autor del libro: ")
     if not autor:
-        print("el autor no puede estar vacio")
+        print("❌el autor no puede estar vacio❌").lower()#lower: colocar todas en minusculas
+        RegistrarLibro()
         
         
     Isbn =input("\ningrese el ISBN del libro: ").split()#.lower()
-    print("libro registrado con exito")
     if not Isbn:
-        print("el ISBN no puede estar vacio")
+        print("❌el ISBN no puede estar vacio❌")
+        RegistrarLibro()
     
 
 def RegistrarSocio():
