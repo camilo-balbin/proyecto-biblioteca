@@ -9,7 +9,8 @@ def menu():#menu de la biblioteca
     print("5. Ver libros prestados ")
     print("6. Ver todos los libros ")
     print("7. Ver todos los socios ")
-    print("0. Salir")njnjnjjnjnjnjnnjjnjnjnnjjnjnjjnjnjjnj
+    print("0. Salir")
+    print("por fin dio esta mierda?")
     
 def RegistrarLibro():
     titulo = input("\ningrese el titulo del libro:").split()#.lower()# split:para separa con una coma cada vez que se ingrese un titulo.
