@@ -82,6 +82,8 @@ def RegistrarLibro():
         if l ['isbn'] == isbn:
             print(f"❌ya existe un libro con el ISBN {isbn}❌")
             return
+        
+        
     #crear el nuevo libro   
     nuevoLibro = {#diccionario
         
@@ -92,7 +94,7 @@ def RegistrarLibro():
         'socioPrestado': None # no se a prestado a ningun socio
       
     }
-    libros.append(nuevoLibro)#append: agregar a la lista
+    libros.append(nuevoLibro)#append: agregar el nuevo libro a a la lista de libros
     print("\n✅libro registrado exitosamente✅")
     print(f"{titulo} - {autor}")
     print(f"ISBN: {isbn}")
@@ -103,7 +105,50 @@ def RegistrarLibro():
 
 
 def RegistrarSocio():
-    pass
+    global socios,auxContador
+    
+    nombre = input("ingrese el nombre del socio: ")
+    
+    if not nombre:
+        print("\n❌El nombre no puede estar vacio, intenta de nuevo❌")
+        RegistrarSocio()
+        
+        
+        
+        
+    apellido = input("ingrese el apellido del socio: ")
+    
+    if not apellido:
+        print("\n❌el apellido no puede estar vacio❌")
+        RegistrarSocio()
+        
+      
+    email = input("ingrese el correo del socio: ")  
+    
+    if not email:
+        print("❌el correo no puede estar vacio❌")
+        RegistrarSocio()
+        
+    for socio in socios:
+        if socio['email'] == email:
+            print(f"\n❌ya existe un socio con el email❌: {email}")
+            return
+        
+    nuevoSocio = {
+        'id': f'socio -{auxContador:3d}',#darle un id a cada socio
+        'nombre' : nombre,
+        'apellido' : apellido,
+        'email' : email,
+        'librosPrestados' :[]
+    
+    }
+    
+    socios.append(nuevoSocio)
+    auxContador += 1 
+    print("\n✅socio registrado exitosamente✅")
+    print(f"{nombre} {apellido}")
+    print(f"email{email}")
+    print(f"ID:{nuevoSocio['id']}")#imprimir el id guardo en la lista de nuevosocio
 
 def PrestarLibro():
     pass
@@ -134,7 +179,10 @@ def VerTodosSocios():
     
     if not socios:
         print("\n❌no hay socios registrados en la biblioteca❌")
-   
+    
+    #for para recorer la lista de socios e imprimirlos
+    for socio in socios:
+        print(f"{[socio ['id'], socio['nombre'], socio['apellido'], socio['email'], li]}")
 
 
 def main():#funcion principal
